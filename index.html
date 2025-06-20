@@ -1,26 +1,546 @@
-.gradient-btn {
-    display: inline-block;
-    padding: 15px 30px;
-    margin: 20px 0;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    border-radius: 50px;
-    background: linear-gradient(45deg, #3498db, #9b59b6);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best CSS Loading Animations for Modern UI – No JavaScript Needed (2025)</title>
+    <meta name="description" content="Explore the best CSS-only loading animations for a modern UI in 2025. Lightweight, responsive, and built without a single line of JavaScript.">
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .credit {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .credit a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .credit a:hover {
+            text-decoration: underline;
+        }
+        
+        article {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        
+        .loader-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .loader-example {
+            flex: 1 1 300px;
+            padding: 20px;
+            background: #f5f7fa;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .loader-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* Loader Animations */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .bouncing-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+        
+        .bouncing-dots div {
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: #3498db;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        
+        .bouncing-dots div:nth-child(1) { animation-delay: -0.32s; }
+        .bouncing-dots div:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        .ripple {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .ripple div {
+            position: absolute;
+            border: 4px solid #3498db;
+            opacity: 1;
+            border-radius: 50%;
+            animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+        
+        .ripple div:nth-child(2) {
+            animation-delay: -0.5s;
+        }
+        
+        @keyframes ripple {
+            0% {
+                top: 25px;
+                left: 25px;
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                top: 0;
+                left: 0;
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+            }
+        }
+        
+        .text-dots {
+            font-size: 24px;
+            color: #2c3e50;
+        }
+        
+        .text-dots::after {
+            content: '.';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60% { content: '...'; }
+            80%, 100% { content: ''; }
+        }
+        
+        .bars-loader {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 50px;
+        }
+        
+        .bars-loader div {
+            width: 8px;
+            height: 30px;
+            margin: 0 3px;
+            background-color: #3498db;
+            animation: bars 1.2s infinite ease-in-out;
+        }
+        
+        .bars-loader div:nth-child(1) { animation-delay: -1.2s; }
+        .bars-loader div:nth-child(2) { animation-delay: -1.1s; }
+        .bars-loader div:nth-child(3) { animation-delay: -1.0s; }
+        .bars-loader div:nth-child(4) { animation-delay: -0.9s; }
+        .bars-loader div:nth-child(5) { animation-delay: -0.8s; }
+        
+        @keyframes bars {
+            0%, 40%, 100% { transform: scaleY(0.4); }
+            20% { transform: scaleY(1); }
+        }
+        
+        .pulse-ring {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            border: 3px solid #3498db;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.1); opacity: 0.0; }
+            50% { opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0.0; }
+        }
+        
+        .shimmer {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .wavy-text {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .wavy-text span {
+            position: relative;
+            display: inline-block;
+            font-size: 24px;
+            color: #3498db;
+            animation: wavy 1.5s infinite;
+            animation-delay: calc(.1s * var(--i));
+        }
+        
+        @keyframes wavy {
+            0%, 40%, 100% { transform: translateY(0); }
+            20% { transform: translateY(-15px); }
+        }
+        
+        .rotating-cube {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 3s infinite linear;
+        }
+        
+        .rotating-cube div {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(52, 152, 219, 0.6);
+            border: 1px solid #3498db;
+        }
+        
+        .rotating-cube div:nth-child(1) { transform: rotateY(0deg) translateZ(20px); }
+        .rotating-cube div:nth-child(2) { transform: rotateY(90deg) translateZ(20px); }
+        .rotating-cube div:nth-child(3) { transform: rotateY(180deg) translateZ(20px); }
+        .rotating-cube div:nth-child(4) { transform: rotateY(270deg) translateZ(20px); }
+        .rotating-cube div:nth-child(5) { transform: rotateX(90deg) translateZ(20px); }
+        .rotating-cube div:nth-child(6) { transform: rotateX(270deg) translateZ(20px); }
+        
+        @keyframes rotate {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
+        }
+        
+        .circular-progress {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .circular-progress div {
+            width: 100%;
+            height: 100%;
+            border: 5px solid transparent;
+            border-top-color: #3498db;
+            border-radius: 50%;
+            animation: circular 1.5s linear infinite;
+        }
+        
+        @keyframes circular {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .benefits {
+            background: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .benefits ul {
+            columns: 2;
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .benefits li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .benefits li::before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+        }
+        
+        .use-cases {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .use-cases ul {
+            columns: 2;
+            list-style-type: square;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .benefits ul, .use-cases ul {
+                columns: 1;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Best CSS Loading Animations for Modern UI (No JavaScript Needed)</h1>
+        <p class="credit">All information and examples courtesy of <a href="https://www.fronti.tech/blog/css-loading-animations-no-javascript" target="_blank">Fronti.tech CSS Loading Animations Guide</a></p>
+    </header>
+    
+    <article>
+        <p>Whether you're building a slick landing page, a fast-loading dashboard, or a simple contact form, loading animations matter. They communicate responsiveness, keep users engaged, and elevate UI quality — all without the need for JavaScript.</p>
+        
+        <p>In 2025, CSS has evolved enough to handle most loading effects natively, and with far better performance. Here are the best CSS-only loading animations you can use in your modern UI projects.</p>
+        
+        <h2>1. The Classic Spinner</h2>
+        <p>The go-to loader for most UIs — simple, circular, and highly recognizable. Perfect for general loading states and small loaders like buttons or modal dialogs.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Classic Spinner</div>
+                <div class="spinner"></div>
+            </div>
+        </div>
+        
+        <h2>2. Bouncing Dots</h2>
+        <p>A smooth three-dot bouncing effect gives users a sense that something is actively happening. Often used in chat apps or loading screens.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Bouncing Dots</div>
+                <div class="bouncing-dots">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>3. Ripple Effect</h2>
+        <p>This animation mimics the behavior of ripples in water. It's soft, elegant, and highly suitable for apps with minimalist or neumorphic designs.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Ripple Effect</div>
+                <div class="ripple">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>4. Text Dot Loader (...)</h2>
+        <p>An understated way to show progress — adding animated dots after a word like "Loading" creates a subtle but familiar effect, used in apps and mobile UIs.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Text Dot Loader</div>
+                <div class="text-dots">Loading</div>
+            </div>
+        </div>
+        
+        <h2>5. Bars Loader</h2>
+        <p>A line of vertical bars that animate up and down rhythmically. This loader feels very dynamic and techy — commonly seen in analytics or data dashboards.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Bars Loader</div>
+                <div class="bars-loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>6. Pulse Ring</h2>
+        <p>A circle that gently pulses or expands — feels "alive" and works well with buttons or status indicators.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Pulse Ring</div>
+                <div class="pulse-ring"></div>
+            </div>
+        </div>
+        
+        <h2>7. Shimmering Placeholder</h2>
+        <p>A skeleton loader where content areas shimmer until real data is ready. Excellent for content-heavy pages like blogs or ecommerce.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Shimmering Placeholder</div>
+                <div class="shimmer"></div>
+            </div>
+        </div>
+        
+        <h2>8. Wavy Text Loader</h2>
+        <p>This loader animates individual characters in a wave pattern, ideal for creative websites and landing pages.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Wavy Text Loader</div>
+                <div class="wavy-text">
+                    <span style="--i:1">L</span>
+                    <span style="--i:2">O</span>
+                    <span style="--i:3">A</span>
+                    <span style="--i:4">D</span>
+                    <span style="--i:5">I</span>
+                    <span style="--i:6">N</span>
+                    <span style="--i:7">G</span>
+                </div>
+            </div>
+        </div>
+        
+        <h2>9. Rotating Squares or Cubes</h2>
+        <p>Simple geometric shapes rotating or flipping. These can feel more "designed" than spinners and work well for branding-heavy UIs.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Rotating Cube</div>
+                <div class="rotating-cube">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>10. Circular Progress Stroke</h2>
+        <p>A radial stroke animates like a ticking progress circle — useful for timed actions or form submission feedback.</p>
+        
+        <div class="loader-container">
+            <div class="loader-example">
+                <div class="loader-title">Circular Progress</div>
+                <div class="circular-progress">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="benefits">
+            <h2>Why Choose CSS-Only Loading Animations?</h2>
+            <ul>
+                <li>Faster Load Time: No JavaScript means fewer HTTP requests.</li>
+                <li>Easier Integration: Plug-and-play into any component or layout.</li>
+                <li>Mobile Friendly: Native CSS performance = smoother UX.</li>
+                <li>Cleaner Codebase: No dependency bloat, less maintenance.</li>
+            </ul>
+        </div>
+        
+        <div class="use-cases">
+            <h2>Where to Use These Loaders:</h2>
+            <ul>
+                <li>Button click states</li>
+                <li>Full-page loading overlays</li>
+                <li>Image or content lazy-loading</li>
+                <li>Form submission feedback</li>
+                <li>Chat or message waiting indicators</li>
+                <li>Progress steps and async data fetches</li>
+            </ul>
+        </div>
+        
+        <h2>Conclusion</h2>
+        <p>Loading animations are more than just visual candy — they build trust, enhance UX, and set the tone for your interface. By choosing pure CSS loaders, you ensure that your design remains fast, responsive, and modern.</p>
+        
+        <p>So next time your app needs to "wait," do it in style — without touching a single line of JavaScript.</p>
+    </article>
+    
+    <footer>
+        <p>All content and examples adapted from <a href="https://www.fronti.tech/blog/css-loading-animations-no-javascript" target="_blank">Fronti.tech's CSS Loading Animations Guide</a></p>
+        <p>© 2025 CSS Loading Animations Blog</p>
+    </footer>
 
-.gradient-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    background: linear-gradient(45deg, #2980b9, #8e44ad);
-}
-
-.gradient-btn:active {
-    transform: translateY(1px);
-}
+    <script>
+        // JavaScript for additional functionality (if needed)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simple console log to confirm JS is working
+            console.log('Blog page loaded with all CSS animations');
+            
+            // You could add more interactive features here if needed
+            // For example, making the loaders clickable to see code
+            const loaders = document.querySelectorAll('.loader-example');
+            loaders.forEach(loader => {
+                loader.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
